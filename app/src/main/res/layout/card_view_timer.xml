@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:layout_marginTop="?actionBarSize"
+    app:cardBackgroundColor="@color/gradient_green_end"
+    app:cardCornerRadius="28dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    app:cardElevation="@dimen/cardview_default_elevation">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/dayOne"
+            android:layout_width="50dp"
+            android:layout_height="80dp"
+            android:gravity="center"
+            android:textSize="36sp"
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="0" />
+
+        <TextView
+            android:id="@+id/dayTwo"
+            android:layout_width="50dp"
+            android:layout_height="80dp"
+            android:gravity="center"
+            android:textSize="36sp"
+            android:layout_marginStart="4dp"
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="7" />
+
+        <TextView
+            android:id="@+id/dayDiv"
+            android:layout_width="20dp"
+            android:layout_height="80dp"
+            android:gravity="center"
+            android:textSize="36sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text=":" />
+
+        <TextView
+            android:id="@+id/hoursOne"
+            android:layout_width="50dp"
+            android:layout_height="80dp"
+            android:gravity="center"
+            android:textSize="36sp"
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="2" />
+
+        <TextView
+            android:id="@+id/hoursTwo"
+            android:layout_width="50dp"
+            android:layout_height="80dp"
+            android:gravity="center"
+            android:textSize="36sp"
+            android:layout_marginStart="4dp"
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="1" />
+
+
+        <TextView
+            android:id="@+id/hoursDiv"
+            android:layout_width="20dp"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:textSize="36sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text=":" />
+
+        <TextView
+            android:id="@+id/secOne"
+            android:layout_width="50dp"
+            android:layout_height="80dp"
+            android:gravity="center"
+            android:textSize="36sp"
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="5" />
+
+        <TextView
+            android:id="@+id/secTwo"
+            android:layout_width="50dp"
+            android:layout_height="80dp"
+            android:gravity="center"
+            android:textSize="36sp"
+            android:background="@color/cardview_dark_background"
+            android:layout_marginStart="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="9" />
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>
