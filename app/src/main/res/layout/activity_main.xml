@@ -11,39 +11,15 @@
         android:layout_height="match_parent" />
 
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomAppNavigation"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/background_dark">
+        android:layout_height="?actionBarSize"
+        android:layout_gravity="bottom"
+        android:background="@color/light_grey"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_navigation_menu"/>
 
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/homeTabItem"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/ic_home"
-            android:text="@string/home_tab" />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/classesTabItem"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/ic_classes"
-            android:text="@string/classes_tab" />
-
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/notesListTabItem"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/ic_notes_list"
-            android:text="@string/notes_list_tab" />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/favouritesTabItem"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/ic_fav"
-            android:text="@string/favourite_tab" />
-    </com.google.android.material.tabs.TabLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

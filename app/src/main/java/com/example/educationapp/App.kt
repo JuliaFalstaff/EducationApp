@@ -1,9 +1,17 @@
 package com.example.educationapp
 
 import android.app.Application
+import com.example.educationapp.di.application
+import com.example.educationapp.di.mainScreen
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.startKoin
 
 class App: Application() {
     override fun onCreate() {
         super.onCreate()
+        startKoin {
+            androidContext(applicationContext)
+            modules(listOf(application, mainScreen))
+        }
     }
 }

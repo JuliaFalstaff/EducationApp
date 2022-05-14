@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <include
+        android:id="@+id/layout_appbar_main"
+        layout="@layout/appbar_layout_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background_dark">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/homeTabItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/ic_home"
+            android:text="@string/home_tab" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/classesTabItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/ic_classes"
+            android:text="@string/classes_tab" />
+
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/notesListTabItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/ic_notes_list"
+            android:text="@string/notes_list_tab" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/favouritesTabItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/ic_fav"
+            android:text="@string/favourite_tab" />
+    </com.google.android.material.tabs.TabLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
