@@ -7,8 +7,10 @@ import com.example.educationapp.databinding.ItemLessonsRvBinding
 import com.example.educationapp.model.data.Lessons
 
 class MainLessonsAdapter(
-    var lessonsList: List<Lessons>
+    var lessonsList: List<Lessons>,
+    val listener: IOnSkypeClickListener
 ) : RecyclerView.Adapter<MainLessonsAdapter.LessonsViewHolder>() {
+
 
     fun setData(list: List<Lessons>) {
         lessonsList = list
@@ -37,6 +39,10 @@ class MainLessonsAdapter(
         fun bind(lesson: Lessons) = with(binding) {
             lessonTitle.text = lesson.title
             lessonTime.text = lesson.date
+
+            skypeView.setOnClickListener {
+                listener.onClick(it)
+            }
         }
     }
 }
