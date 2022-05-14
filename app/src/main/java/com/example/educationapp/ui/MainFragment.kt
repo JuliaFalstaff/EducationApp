@@ -1,4 +1,4 @@
-package com.example.educationapp
+package com.example.educationapp.ui
 
 import androidx.fragment.app.Fragment
 
