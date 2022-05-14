@@ -7,6 +7,7 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import com.example.educationapp.databinding.ActivityMainBinding
+import com.example.educationapp.ui.ClassesFragment
 import com.example.educationapp.ui.MainFragment
 import com.google.android.material.tabs.TabLayout
 
@@ -42,7 +43,8 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 R.id.bottom_menu_classes -> {
-                    Toast.makeText(applicationContext, "Open Classes fragment", Toast.LENGTH_SHORT).show()
+                    supportFragmentManager.beginTransaction().replace(R.id.container, ClassesFragment.newInstance())
+                        .commit()
                     true
                 }
                 R.id.bottom_menu_notes -> {

@@ -23,5 +23,20 @@ fun getMockLessons(): List<Lessons> = listOf(
                 title = "Physics",
                 date = "14-05-2022 19:30",
                 description = "sample lesson description"
+        ),
+        Lessons(
+                title = "Geometry",
+                date = "18-05-2022 18:30",
+                description = "sample lesson description"
+        ),
+        Lessons(
+                title = "Music",
+                date = "23-05-2022 12:30",
+                description = "sample lesson description"
+        ),
+        Lessons(
+                title = "Physics",
+                date = "27-05-2022 10:30",
+                description = "sample lesson description"
         )
 )

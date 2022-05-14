@@ -23,5 +23,15 @@ fun getMockHomeWorks(): List<HomeWorks> = listOf(
                 titleLesson = "Physics",
                 time = "16-05-2022 15:30",
                 descriptionHomework = "do some exercise at home"
+        ),
+        HomeWorks(
+                titleLesson = "Geometry",
+                time = "17-05-2022 08:30",
+                descriptionHomework = "do some homework: theory"
+        ),
+        HomeWorks(
+                titleLesson = "Music",
+                time = "25-05-2022 15:30",
+                descriptionHomework = "do some homework: Phillipp Glass notes"
         )
 )

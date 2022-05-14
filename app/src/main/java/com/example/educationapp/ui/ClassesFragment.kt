@@ -9,29 +9,28 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import com.example.educationapp.databinding.FragmentClassesBinding
 import com.example.educationapp.databinding.FragmentMainBinding
 import com.example.educationapp.model.AppState
+import com.example.educationapp.ui.adapters.ClassesFragmentAdapter
 import com.example.educationapp.ui.adapters.IOnSkypeClickListener
-import com.example.educationapp.ui.adapters.MainHomeworkAdapter
-import com.example.educationapp.ui.adapters.MainLessonsAdapter
-import com.example.educationapp.viewmodel.MainViewModel
+import com.example.educationapp.viewmodel.ClassesFragmentViewModel
 import org.koin.androidx.scope.createScope
 import org.koin.core.component.KoinScopeComponent
 import org.koin.core.component.inject
 import org.koin.core.scope.Scope
 
-class MainFragment : Fragment(), KoinScopeComponent {
+class ClassesFragment: Fragment(), KoinScopeComponent {
 
     override val scope: Scope by lazy { createScope(this) }
-    private var _binding: FragmentMainBinding? = null
+    private var _binding: FragmentClassesBinding? = null
     private val binding get() = _binding!!
-    val viewModel: MainViewModel by inject()
-    private var adapter: MainLessonsAdapter? = null
-    private var adapterHomework: MainHomeworkAdapter? = null
+    val viewModel: ClassesFragmentViewModel by inject()
+    private var adapter: ClassesFragmentAdapter? = null
     private val listener: IOnSkypeClickListener = object : IOnSkypeClickListener {
         override fun onClick(skype: View) {
             val intent = Intent(Intent.ACTION_VIEW).apply {
-                data = Uri.parse(SKYPE_URL)
+                data = Uri.parse(MainFragment.SKYPE_URL)
             }
             startActivity(intent)
         }
@@ -42,7 +41,7 @@ class MainFragment : Fragment(), KoinScopeComponent {
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        _binding = FragmentMainBinding.inflate(inflater, container, false)
+        _binding = FragmentClassesBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -53,25 +52,20 @@ class MainFragment : Fragment(), KoinScopeComponent {
 
     private fun initViewModel() {
         viewModel.getLiveData().observe(viewLifecycleOwner, Observer { renderData(it) })
-        viewModel.loadClassesData()
+        viewModel.loadClassesAllData()
     }
 
     private fun renderData(state: AppState?) {
         when (state) {
             is AppState.SuccessClasses -> {
                 val lessonList = state.data
-                binding.dailyLessonRecyclerView.adapter = lessonList.lessons.let {
-                    MainLessonsAdapter(it, listener)
+                binding.classesRecyclerView.adapter = lessonList.lessons.let {
+                    ClassesFragmentAdapter(it, listener)
                 }
                 adapter.let {
                     it?.setData(lessonList.lessons)
                 }
-                binding.homeworkRecyclerView.adapter = lessonList.homeWork.let {
-                    MainHomeworkAdapter(it)
-                }
-                adapterHomework.let {
-                    it?.setData(lessonList.homeWork)
-                }
+
             }
             is AppState.Error -> {
                 Toast.makeText(
@@ -90,10 +84,8 @@ class MainFragment : Fragment(), KoinScopeComponent {
     }
 
     companion object {
-        fun newInstance() = MainFragment()
+        fun newInstance() = ClassesFragment()
         const val SKYPE_URL = "https://www.skype.com/ru/"
     }
+
 }
-
-
-

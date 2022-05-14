@@ -26,15 +26,26 @@
         app:layout_constraintTop_toBottomOf="@+id/circleTimeView" />
 
 
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="08-00 : 08-45"
+        android:layout_marginStart="24dp"
+        app:layout_constraintStart_toStartOf="@+id/circleTimeView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/materialCardView"
-        android:layout_width="300dp"
-        android:layout_height="match_parent"
+        android:layout_width="350dp"
+        android:layout_height="120dp"
         android:layout_gravity="end"
         app:cardCornerRadius="28dp"
         app:cardElevation="@dimen/cardview_default_elevation"
+        app:layout_constraintStart_toEndOf="@id/timeLineView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/time">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cons"
@@ -47,8 +58,7 @@
                 android:layout_height="16dp"
                 android:src="@drawable/ic_baseline_temple_buddhist_24"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/verticalGuideline"
-                app:layout_constraintStart_toStartOf="parent"
+                               app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView

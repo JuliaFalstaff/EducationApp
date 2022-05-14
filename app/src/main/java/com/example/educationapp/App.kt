@@ -2,6 +2,7 @@ package com.example.educationapp
 
 import android.app.Application
 import com.example.educationapp.di.application
+import com.example.educationapp.di.classScreen
 import com.example.educationapp.di.mainScreen
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -11,7 +12,7 @@ class App: Application() {
         super.onCreate()
         startKoin {
             androidContext(applicationContext)
-            modules(listOf(application, mainScreen))
+            modules(listOf(application, mainScreen, classScreen))
         }
     }
 }
