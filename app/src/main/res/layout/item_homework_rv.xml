@@ -13,42 +13,52 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/lessonTitle"
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/history"
-            android:layout_marginTop="32dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.1"/>
 
         <TextView
-            android:id="@+id/lessonTime"
+            android:id="@+id/homeworkTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/lesson_time"
-            android:drawableStart="@drawable/ic_clock"
+            android:layout_marginTop="16dp"
+            android:text="@string/history"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lessonTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/homeworkTime" />
+
+        <TextView
+            android:id="@+id/homeworkTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_clock"
+            android:text="@string/lesson_time"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/guideline" />
 
         <TextView
             android:id="@+id/descriptionHWTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lessonTime"
-            tools:text="Sample description of homework"/>
+            app:layout_constraintTop_toBottomOf="@+id/homeworkTitle"
+            tools:text="Sample description of homework" />
 
         <ImageView
             android:id="@+id/pictureHWImageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_baseline_menu_book_24"
-            app:layout_constraintBottom_toBottomOf="@+id/lessonTime"
+            app:layout_constraintBottom_toBottomOf="@+id/homeworkTitle"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/lessonTime"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toEndOf="@+id/homeworkTitle"
+            app:layout_constraintTop_toTopOf="@+id/homeworkTitle" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

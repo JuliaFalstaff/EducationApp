@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.example.educationapp.databinding.FragmentMainBinding
 import com.example.educationapp.model.AppState
+import com.example.educationapp.ui.adapters.MainHomeworkAdapter
 import com.example.educationapp.ui.adapters.MainLessonsAdapter
 import com.example.educationapp.viewmodel.MainViewModel
 import org.koin.androidx.scope.createScope
@@ -24,6 +25,7 @@ class MainFragment : Fragment(), KoinScopeComponent {
     private val binding get() = _binding!!
     val viewModel: MainViewModel by inject()
     private var adapter: MainLessonsAdapter? = null
+    private var adapterHomework: MainHomeworkAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -56,6 +58,12 @@ class MainFragment : Fragment(), KoinScopeComponent {
                 }
                 adapter.let {
                     it?.setData(lessonList.lessons)
+                }
+                binding.homeworkRecyclerView.adapter = lessonList.homeWork.let {
+                    MainHomeworkAdapter(it)
+                }
+                adapterHomework.let {
+                    it?.setData(lessonList.homeWork)
                 }
             }
             is AppState.Error -> {
