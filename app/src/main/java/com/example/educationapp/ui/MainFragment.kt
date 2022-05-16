@@ -57,7 +57,6 @@ class MainFragment : Fragment(), KoinScopeComponent {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViewModel()
-//        setTimer()
 
         val dateOfExam = "13-06-2022 20:30:00"
         val formatter = SimpleDateFormat("dd-MM-yyyy HH:mm:ss")
@@ -70,68 +69,23 @@ class MainFragment : Fragment(), KoinScopeComponent {
     private fun setCount(diff: Long) {
         object : CountDownTimer(diff, 1000) {
 
-            override fun onTick(millisUntilFinished: Long) {
+            override fun onTick(millisUntilFinished: Long) = with(binding.timerLayout) {
                 val dateStr = Date(millisUntilFinished).convertToStringForTimer()
-                val day1 = dateStr[0].toString()
-                val day2 = dateStr[1].toString()
-                val hours1 = dateStr[3].toString()
-                val hours2 = dateStr[4].toString()
-                val minutes1 = dateStr[6].toString()
-                val minutes2 = dateStr[7].toString()
-                binding.textTimer.setText("days: $day1 $day2 hours: $hours1 $hours2 minutes: $minutes1 $minutes2 " )
-            }
-
-            override fun onFinish() {
-                binding.textTimer.setText("done!")
-            }
-        }.start()
-    }
-
-
-    @SuppressLint("SimpleDateFormat")
-    private fun setTimer() {
-        val dateOfExam = "13-06-2022 20:30:00"
-//        val examConvert= dateOfExam.convertStringToDateOldApi()?.time
-        val currentTime = getCurrentDateInMillis()
-
-
-            val formatter = SimpleDateFormat("dd-MM-yyyy HH:mm:ss")
-
-
-        val ex = formatter.parse(dateOfExam).time
-        val diff = ex?.minus(currentTime)
-//        diff?.let { startCountDownTimer(it) }
-
-        Log.d("TAG 777", "$ex + $currentTime + $diff")
-
-
-    }
-
-    private fun startCountDownTimer(timeMillis: Long) {
-        timer = object : CountDownTimer(timeMillis, 1) {
-            override fun onTick(millisUntilFinished: Long)  {
-
-                val day = millisUntilFinished / (1000 * 60 * 60 *24)
-                val hours = millisUntilFinished / ((1000 * 60 * 60) % 24)
-                val minutes = millisUntilFinished / ((1000 * 60) % 60)
-                Log.d("TAG 777", "$day + $hours + $minutes")
-                val dateStr = Date(millisUntilFinished).convertToString()
-                binding.textTimer.text = dateStr.toString()
-//                dayTwo.text = ""
-//                hoursOne.text = "5"
-//                 hoursTwo.text = ""
-//                minOne.text = ""
-//                minTwo.text = ""
+                dayOne.text = dateStr[0].toString()
+                dayTwo.text = dateStr[1].toString()
+                hoursOne.text = dateStr[3].toString()
+                hoursTwo.text = dateStr[4].toString()
+                minOne.text = dateStr[6].toString()
+                minTwo.text = dateStr[7].toString()
 
             }
 
             override fun onFinish() {
                 Log.d("TAG", "onFinish")
             }
-
-
         }.start()
     }
+
 
     private fun initViewModel() {
         viewModel.getLiveData().observe(viewLifecycleOwner, Observer { renderData(it) })
