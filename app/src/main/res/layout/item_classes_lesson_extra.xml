@@ -19,7 +19,7 @@
         android:id="@+id/timeLineView"
         android:layout_width="3dp"
         android:layout_height="wrap_content"
-        android:background="@color/gradient_green_start"
+        android:background="@color/gradient_green_center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/materialCardView"
         app:layout_constraintStart_toStartOf="parent"

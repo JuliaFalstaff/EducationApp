@@ -5,12 +5,12 @@ import com.example.educationapp.model.data.HomeWorks
 fun getMockHomeWorks(): List<HomeWorks> = listOf(
         HomeWorks(
                 titleLesson = "History",
-                time = "14-05-2022 08:30",
+                time = "17-05-2022 08:30",
                 descriptionHomework = "do some homework: read about ancient times"
         ),
         HomeWorks(
                 titleLesson = "Maths",
-                time = "12-05-2022 08:30",
+                time = "18-05-2022 08:30",
                 descriptionHomework = "do some homework: factorials and algorithms"
         ),
         HomeWorks(

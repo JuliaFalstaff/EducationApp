@@ -7,8 +7,8 @@ import com.example.educationapp.databinding.ItemLessonsRvBinding
 import com.example.educationapp.model.data.Lessons
 
 class MainLessonsAdapter(
-    var lessonsList: List<Lessons>,
-    val listener: IOnSkypeClickListener
+        var lessonsList: List<Lessons>,
+        val listener: IOnSkypeClickListener,
 ) : RecyclerView.Adapter<MainLessonsAdapter.LessonsViewHolder>() {
 
 
@@ -19,11 +19,11 @@ class MainLessonsAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LessonsViewHolder {
         return LessonsViewHolder(
-            ItemLessonsRvBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
+                ItemLessonsRvBinding.inflate(
+                        LayoutInflater.from(parent.context),
+                        parent,
+                        false
+                )
         )
     }
 
@@ -34,12 +34,11 @@ class MainLessonsAdapter(
     override fun getItemCount(): Int = lessonsList.size
 
     inner class LessonsViewHolder(val binding: ItemLessonsRvBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+            RecyclerView.ViewHolder(binding.root) {
 
         fun bind(lesson: Lessons) = with(binding) {
             lessonTitle.text = lesson.title
             lessonTime.text = lesson.date
-
             skypeView.setOnClickListener {
                 listener.onClick(it)
             }

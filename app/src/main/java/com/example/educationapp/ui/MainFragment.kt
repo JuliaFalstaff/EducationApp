@@ -1,12 +1,17 @@
 package com.example.educationapp.ui
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.icu.util.LocaleData
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.example.educationapp.databinding.FragmentMainBinding
@@ -19,6 +24,10 @@ import org.koin.androidx.scope.createScope
 import org.koin.core.component.KoinScopeComponent
 import org.koin.core.component.inject
 import org.koin.core.scope.Scope
+import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 class MainFragment : Fragment(), KoinScopeComponent {
 
@@ -49,6 +58,25 @@ class MainFragment : Fragment(), KoinScopeComponent {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViewModel()
+        setTimer()
+    }
+
+
+    @SuppressLint("SimpleDateFormat")
+    private fun setTimer() {
+        val dateOfExam = "13-06-2022 20:30:00"
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val pattern = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")
+            val today = LocalDateTime.now()
+            today.format(pattern)
+            Log.d("TAG", "today: $today")
+
+        } else {
+            val cal: Calendar = Calendar.getInstance()
+            val formatter = SimpleDateFormat("dd-MM-yyyy HH:mm:ss")
+                .format(Calendar.getInstance().time)
+            Log.d("TAG", "today: $formatter")
+        }
     }
 
     private fun initViewModel() {
@@ -60,15 +88,11 @@ class MainFragment : Fragment(), KoinScopeComponent {
         when (state) {
             is AppState.SuccessClasses -> {
                 val lessonList = state.data
-                binding.dailyLessonRecyclerView.adapter = lessonList.lessons.let {
-                    MainLessonsAdapter(it, listener)
-                }
+                binding.dailyLessonRecyclerView.adapter = MainLessonsAdapter(lessonList.lessons, listener)
                 adapter.let {
                     it?.setData(lessonList.lessons)
                 }
-                binding.homeworkRecyclerView.adapter = lessonList.homeWork.let {
-                    MainHomeworkAdapter(it)
-                }
+                binding.homeworkRecyclerView.adapter = MainHomeworkAdapter(lessonList.homeWork)
                 adapterHomework.let {
                     it?.setData(lessonList.homeWork)
                 }
