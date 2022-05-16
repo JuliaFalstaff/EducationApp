@@ -1,19 +1,21 @@
 package com.example.educationapp.ui.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.educationapp.databinding.ItemLessonsRvBinding
 import com.example.educationapp.model.data.Lessons
+import com.example.educationapp.utils.getCurrentDate
+import com.example.educationapp.utils.getCurrentTime
 
 class MainLessonsAdapter(
         var lessonsList: List<Lessons>,
         val listener: IOnSkypeClickListener,
 ) : RecyclerView.Adapter<MainLessonsAdapter.LessonsViewHolder>() {
 
-
     fun setData(list: List<Lessons>) {
-        lessonsList = list
+        lessonsList = list.sortedBy { it.date }
         notifyDataSetChanged()
     }
 
@@ -31,9 +33,10 @@ class MainLessonsAdapter(
         holder.bind(lessonsList[position])
     }
 
+
     override fun getItemCount(): Int = lessonsList.size
 
-    inner class LessonsViewHolder(val binding: ItemLessonsRvBinding) :
+        inner class LessonsViewHolder(val binding: ItemLessonsRvBinding) :
             RecyclerView.ViewHolder(binding.root) {
 
         fun bind(lesson: Lessons) = with(binding) {
