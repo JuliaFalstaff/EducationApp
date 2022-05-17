@@ -41,16 +41,15 @@
         android:layout_width="350dp"
         android:layout_height="200dp"
         android:layout_gravity="end"
-        app:cardBackgroundColor="@color/gradient_green_end"
         app:cardCornerRadius="28dp"
         app:cardElevation="@dimen/cardview_default_elevation"
-
         app:layout_constraintStart_toEndOf="@id/timeLineView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/time">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cons"
+            android:background="@drawable/gradient_drawable"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 

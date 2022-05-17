@@ -12,4 +12,5 @@
     <color name="gradient_green_start">#5CB270</color>
     <color name="gradient_green_center">#82C26E</color>
     <color name="gradient_green_end">#A8D26D</color>
+    <color name="gradient_back">@color/color_gradient</color>
 </resources>

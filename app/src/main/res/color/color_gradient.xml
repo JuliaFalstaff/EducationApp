@@ -2,6 +2,4 @@
     <gradient xmlns:android="http://schemas.android.com/apk/res/android"
         android:startColor = "#5CB270"
         android:centerColor = "#82C26E"
-        android:endColor = "#A8D26D"
-        android:angle = "90"
-        android:type = "linear" />
+        android:endColor = "#A8D26D" />

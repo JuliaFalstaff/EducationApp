@@ -1,6 +1,5 @@
 package com.example.educationapp.ui
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -17,7 +16,9 @@ import com.example.educationapp.model.AppState
 import com.example.educationapp.ui.adapters.IOnSkypeClickListener
 import com.example.educationapp.ui.adapters.MainHomeworkAdapter
 import com.example.educationapp.ui.adapters.MainLessonsAdapter
-import com.example.educationapp.utils.*
+import com.example.educationapp.utils.convertToStringForTimer
+import com.example.educationapp.utils.getCurrentDate
+import com.example.educationapp.utils.getCurrentDateInMillis
 import com.example.educationapp.viewmodel.MainViewModel
 import org.koin.androidx.scope.createScope
 import org.koin.core.component.KoinScopeComponent
@@ -46,9 +47,9 @@ class MainFragment : Fragment(), KoinScopeComponent {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?,
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?,
     ): View? {
         _binding = FragmentMainBinding.inflate(inflater, container, false)
         return binding.root
@@ -67,17 +68,15 @@ class MainFragment : Fragment(), KoinScopeComponent {
     }
 
     private fun setCount(diff: Long) {
-        object : CountDownTimer(diff, 1000) {
-
+        object : CountDownTimer(diff, COUNT_DOWN_INTERVAL_TIMER) {
             override fun onTick(millisUntilFinished: Long) = with(binding.timerLayout) {
-                val dateStr = Date(millisUntilFinished).convertToStringForTimer()
-                dayOne.text = dateStr[0].toString()
-                dayTwo.text = dateStr[1].toString()
-                hoursOne.text = dateStr[3].toString()
-                hoursTwo.text = dateStr[4].toString()
-                minOne.text = dateStr[6].toString()
-                minTwo.text = dateStr[7].toString()
-
+                val dateString = Date(millisUntilFinished).convertToStringForTimer()
+                dayOne.text = dateString[0].toString()
+                dayTwo.text = dateString[1].toString()
+                hoursOne.text = dateString[3].toString()
+                hoursTwo.text = dateString[4].toString()
+                minOne.text = dateString[6].toString()
+                minTwo.text = dateString[7].toString()
             }
 
             override fun onFinish() {
@@ -96,7 +95,8 @@ class MainFragment : Fragment(), KoinScopeComponent {
         when (state) {
             is AppState.SuccessClasses -> {
                 val lessonList = state.data
-                binding.dailyLessonRecyclerView.adapter = MainLessonsAdapter(lessonList.lessons, listener)
+                val filteredListByDate = lessonList.lessons.filter { it.date > getCurrentDate() }.sortedBy { it.date }
+                binding.dailyLessonRecyclerView.adapter = MainLessonsAdapter(filteredListByDate, listener)
                 adapter.let {
                     it?.setData(lessonList.lessons)
                 }
@@ -108,9 +108,9 @@ class MainFragment : Fragment(), KoinScopeComponent {
             }
             is AppState.Error -> {
                 Toast.makeText(
-                    requireContext(),
-                    "Error: ${state.error.message}",
-                    Toast.LENGTH_SHORT
+                        requireContext(),
+                        "Error: ${state.error.message}",
+                        Toast.LENGTH_SHORT
                 ).show()
             }
         }
@@ -118,13 +118,13 @@ class MainFragment : Fragment(), KoinScopeComponent {
 
     override fun onDestroy() {
         timer?.cancel()
-        _binding = null
         super.onDestroy()
     }
 
     companion object {
         fun newInstance() = MainFragment()
         const val SKYPE_URL = "https://www.skype.com/ru/"
+        const val COUNT_DOWN_INTERVAL_TIMER = 1L
     }
 }
 
