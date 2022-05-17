@@ -5,8 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
-
     <include
         android:id="@+id/timerLayout"
         layout="@layout/card_view_timer"
@@ -17,23 +15,24 @@
 
     <TextView
         android:id="@+id/classesTextView"
-        android:text="@string/classes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/guideline30Percent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textSize="24sp"
+        android:text="@string/classes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline30Percent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/dailyLessonRecyclerView"
-        android:layout_marginTop="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:layout_marginTop="16dp"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/classesTextView"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:listitem="@layout/item_lessons_rv"/>
+        app:layout_constraintTop_toBottomOf="@id/classesTextView"
+        tools:listitem="@layout/item_lessons_rv" />
 
     <TextView
         android:id="@+id/homeworkTextView"
@@ -41,26 +40,27 @@
         android:layout_height="wrap_content"
         android:text="@string/homework"
         app:layout_constraintBottom_toTopOf="@id/homeworkRecyclerView"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/homeworkRecyclerView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginTop="16dp"
+        android:textSize="24sp"
+        android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_homework_rv"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dailyLessonRecyclerView" />
+        app:layout_constraintTop_toBottomOf="@+id/dailyLessonRecyclerView"
+        tools:listitem="@layout/item_homework_rv" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline30Percent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.30"/>
+        app:layout_constraintGuide_percent="0.30" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

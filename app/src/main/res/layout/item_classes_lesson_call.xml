@@ -54,11 +54,12 @@
 
             <ImageView
                 android:id="@+id/lessonImage"
-                android:layout_width="26dp"
-                android:layout_height="16dp"
-                android:src="@drawable/ic_baseline_temple_buddhist_24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_lesson"
+                android:layout_marginStart="4dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                               app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView

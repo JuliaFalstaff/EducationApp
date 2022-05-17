@@ -12,7 +12,6 @@ import org.koin.dsl.module
 
 val application = module {
     single<IRepository> { RepositoryImpl(datasource = DataSourceImpl()) }
-
 }
 
 val mainScreen = module {
@@ -27,4 +26,3 @@ val classScreen = module {
         viewModel { ClassesFragmentViewModel(repo = get()) }
     }
 }
-

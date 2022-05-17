@@ -11,6 +11,11 @@
     <string name="favourite_tab">Favourite</string>
     <string name="notes_list_tab">Notes</string>
     <string name="history">History</string>
-    <string name="lesson_time">8.00-8.45</string>
+    <string name="lesson_time">8.00–8.45</string>
     <string name="skype_open_in">Open In</string>
+    <string name="are_you_ready_for_exams">Are you ready for exams?</string>
+    <string name="days">Days</string>
+    <string name="hours">Hours</string>
+    <string name="minutes">Minutes</string>
+    <string name="greetings">Hi, Student!</string>
 </resources>

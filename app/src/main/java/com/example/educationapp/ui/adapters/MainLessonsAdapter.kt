@@ -1,13 +1,10 @@
 package com.example.educationapp.ui.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.educationapp.databinding.ItemLessonsRvBinding
 import com.example.educationapp.model.data.Lessons
-import com.example.educationapp.utils.getCurrentDate
-import com.example.educationapp.utils.getCurrentTime
 
 class MainLessonsAdapter(
         var lessonsList: List<Lessons>,
@@ -32,7 +29,6 @@ class MainLessonsAdapter(
     override fun onBindViewHolder(holder: LessonsViewHolder, position: Int) {
         holder.bind(lessonsList[position])
     }
-
 
     override fun getItemCount(): Int = lessonsList.size
 

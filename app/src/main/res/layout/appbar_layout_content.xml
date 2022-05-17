@@ -19,7 +19,7 @@
             android:background="@color/background_dark"
             app:titleTextColor="@color/white"
             app:menu="@menu/menu"
-            app:title="Hi, Student!">
+            app:title="@string/greetings">
 
         </com.google.android.material.appbar.MaterialToolbar>
     </com.google.android.material.appbar.AppBarLayout>

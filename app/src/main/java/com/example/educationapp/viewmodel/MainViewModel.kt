@@ -13,17 +13,10 @@ class MainViewModel(
 ) : ViewModel() {
 
     fun getLiveData(): LiveData<AppState> = liveDataToObserve
-    private val compositeDisposable = CompositeDisposable()
 
     fun loadClassesData() {
         Thread {
             liveDataToObserve.postValue(AppState.SuccessClasses(repo.getData()))
         }.start()
-
     }
-
-    fun loadHomeworkData() {
-        liveDataToObserve.postValue(AppState.SuccessHomeWorks(repo.getData().homeWork))
-    }
-
 }

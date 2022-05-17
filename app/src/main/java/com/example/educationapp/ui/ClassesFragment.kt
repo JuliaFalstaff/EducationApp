@@ -14,6 +14,7 @@ import com.example.educationapp.databinding.FragmentMainBinding
 import com.example.educationapp.model.AppState
 import com.example.educationapp.ui.adapters.ClassesFragmentAdapter
 import com.example.educationapp.ui.adapters.IOnSkypeClickListener
+import com.example.educationapp.utils.getCurrentDate
 import com.example.educationapp.viewmodel.ClassesFragmentViewModel
 import org.koin.androidx.scope.createScope
 import org.koin.core.component.KoinScopeComponent
@@ -59,9 +60,8 @@ class ClassesFragment: Fragment(), KoinScopeComponent {
         when (state) {
             is AppState.SuccessClasses -> {
                 val lessonList = state.data
-                binding.classesRecyclerView.adapter = lessonList.lessons.let {
-                    ClassesFragmentAdapter(it, listener)
-                }
+                val filteredListByDate = lessonList.lessons.filter { it.date > getCurrentDate() }.sortedBy { it.date }
+                binding.classesRecyclerView.adapter = ClassesFragmentAdapter(filteredListByDate, listener)
                 adapter.let {
                     it?.setData(lessonList.lessons)
                 }

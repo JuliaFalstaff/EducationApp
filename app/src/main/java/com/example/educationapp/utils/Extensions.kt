@@ -2,7 +2,6 @@ package com.example.educationapp.utils
 
 import android.annotation.SuppressLint
 import android.os.Build
-import android.util.Log
 import androidx.annotation.RequiresApi
 import java.text.SimpleDateFormat
 import java.time.LocalDate
@@ -14,7 +13,7 @@ import java.util.*
 @RequiresApi(Build.VERSION_CODES.O)
 fun String.convertStringToDateNewApi(): LocalDate {
     return LocalDate.parse(this, DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"))
- }
+}
 
 
 @SuppressLint("SimpleDateFormat")
@@ -23,8 +22,6 @@ fun String.convertStringToDateOldApi(): Date? {
     return formatter.parse(this)
 }
 
-
-//
 fun getCurrentTime(): String {
     return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
         val nowTime = LocalDate.now()
@@ -51,7 +48,6 @@ fun getCurrentDate(): String {
         Calendar.getInstance().time.convertToString()
     }
 }
-
 
 @SuppressLint("SimpleDateFormat")
 fun formatStringDateToTime(date: String): String {

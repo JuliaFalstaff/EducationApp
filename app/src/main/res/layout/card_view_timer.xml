@@ -3,34 +3,48 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
+    android:layout_height="200dp"
+    android:layout_gravity="center|top"
     android:layout_marginTop="?actionBarSize"
-    app:cardBackgroundColor="@color/gradient_green_end"
+    app:cardBackgroundColor="@color/cardview_dark_background"
     app:cardCornerRadius="28dp"
-    android:layout_marginStart="8dp"
-    android:layout_marginEnd="8dp"
     app:cardElevation="@dimen/cardview_default_elevation">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
         android:layout_gravity="center"
-        android:orientation="horizontal">
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/gradient_drawable">
+
+        <TextView
+            android:id="@+id/examTitleTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/are_you_ready_for_exams"
+            android:textAlignment="center"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/hoursOne"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/dayOne"
             android:layout_width="50dp"
             android:layout_height="80dp"
-            android:gravity="center"
-            android:textSize="36sp"
-            android:textColor="@color/white"
             android:layout_marginStart="16dp"
             android:background="@color/cardview_dark_background"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="36sp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/dayTwo"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="0" />
@@ -39,13 +53,15 @@
             android:id="@+id/dayTwo"
             android:layout_width="50dp"
             android:layout_height="80dp"
-            android:gravity="center"
-            android:textSize="36sp"
-            android:textColor="@color/white"
             android:layout_marginStart="4dp"
             android:background="@color/cardview_dark_background"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="36sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/dayDiv"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/dayOne"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="7" />
 
@@ -54,60 +70,72 @@
             android:layout_width="20dp"
             android:layout_height="80dp"
             android:gravity="center"
+            android:text=":"
             android:textSize="36sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:text=":" />
+            app:layout_constraintEnd_toStartOf="@+id/hoursOne"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/dayTwo"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/hoursOne"
             android:layout_width="50dp"
             android:layout_height="80dp"
-            android:gravity="center"
-            android:textSize="36sp"
-            android:textColor="@color/white"
             android:background="@color/cardview_dark_background"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="36sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/hoursTwo"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/dayDiv"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="2" />
+
 
         <TextView
             android:id="@+id/hoursTwo"
             android:layout_width="50dp"
             android:layout_height="80dp"
+            android:layout_marginStart="4dp"
+            android:background="@color/cardview_dark_background"
             android:gravity="center"
             android:textColor="@color/white"
             android:textSize="36sp"
-            android:layout_marginStart="4dp"
-            android:background="@color/cardview_dark_background"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/hoursDiv"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/hoursOne"
+            app:layout_constraintStart_toStartOf="@+id/guideline0.5"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="1" />
-
 
         <TextView
             android:id="@+id/hoursDiv"
             android:layout_width="20dp"
             android:layout_height="50dp"
             android:gravity="center"
+            android:text=":"
             android:textSize="36sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:text=":" />
+            app:layout_constraintEnd_toStartOf="@+id/minOne"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/hoursTwo"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/minOne"
             android:layout_width="50dp"
             android:layout_height="80dp"
-            android:gravity="center"
-            android:textSize="36sp"
-            android:textColor="@color/white"
             android:background="@color/cardview_dark_background"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="36sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/minTwo"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/hoursDiv"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="5" />
 
@@ -115,16 +143,57 @@
             android:id="@+id/minTwo"
             android:layout_width="50dp"
             android:layout_height="80dp"
-            android:gravity="center"
-            android:textSize="36sp"
-            android:textColor="@color/white"
-            android:background="@color/cardview_dark_background"
             android:layout_marginStart="4dp"
+            android:layout_marginEnd="16dp"
+            android:background="@color/cardview_dark_background"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="36sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/minOne"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="9" />
-    </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/days"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/dayTwo"
+            app:layout_constraintStart_toStartOf="@+id/dayOne"
+            app:layout_constraintTop_toBottomOf="@+id/dayOne" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hours"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/hoursDiv"
+            app:layout_constraintStart_toStartOf="@+id/hoursOne"
+            app:layout_constraintTop_toBottomOf="@+id/hoursOne" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/minutes"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/minTwo"
+            app:layout_constraintStart_toEndOf="@+id/hoursDiv"
+            app:layout_constraintTop_toBottomOf="@+id/minTwo" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline0.5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.cardview.widget.CardView>
