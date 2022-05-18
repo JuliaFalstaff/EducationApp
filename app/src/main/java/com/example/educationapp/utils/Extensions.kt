@@ -42,7 +42,7 @@ fun getCurrentDateInMillis(): Long {
 
 fun getCurrentDate(): String {
     return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-        val nowTime = LocalDate.now()
+        val nowTime = LocalDateTime.now()
         nowTime.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"))
     } else {
         Calendar.getInstance().time.convertToString()
