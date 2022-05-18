@@ -1,5 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">EducationApp</string>
     <string name="hi_student">Hi, Student!</string>
     <string name="classes">Classes</string>
     <string name="homework">HomeWork</string>
